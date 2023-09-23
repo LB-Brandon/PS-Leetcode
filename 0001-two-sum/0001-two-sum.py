@@ -30,6 +30,9 @@ class Solution:
                 nums_map[num] = i
             return []
 
+        def two_pointer():
+            # To be like BF
+            pass
 
         # excute
         return optimized_using_dict()
