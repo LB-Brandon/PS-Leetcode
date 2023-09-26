@@ -50,6 +50,47 @@ class Solution:
                         right -= 1
             return output
 
+        def pos_neg_zero_sum():
+            output = set()
+
+            # split nums into three lists
+            n, p, z = [], [], []
+            for num in nums:
+                if num > 0:
+                    p.append(num)
+                elif num < 0:
+                    n.append(num)
+                else:
+                    z.append(num)
+            
+            # create a separate set for negatives and positives for O(1) loop-up times
+            N, P = set(n), set(p)
+
+            if z:
+                for num in P:
+                    if -1*num in N:
+                        output.add((-1*num, 0, num))
+            
+            # if there are at least 3 zeros in the list then also include (0, 0, 0) = 0
+            if len(z) >= 3:
+                output.add((0,0,0))
+
+            # for all pairs of negative numbers(-3, -1), check to see if the complement(4) exists 
+            for i in range(len(n)):
+                for j in range(i+1, len(n)):
+                    target = -1*(n[i]+n[j])
+                    if target in P:
+                        output.add(tuple(sorted([n[i], n[j], target])))
+
+            # for all pairs of positive numbers, check to see if the complement exists
+            for i in range(len(p)):
+                for j in range(i+1, len(p)):
+                    target = -1*(p[i]+p[j])
+                    if target in N:
+                        output.add(tuple(sorted([p[i], p[j], target])))
+            return output            
+
+
 
         # execute
-        return two_pointer()
+        return pos_neg_zero_sum()
