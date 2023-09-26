@@ -50,5 +50,5 @@ class Solution:
             return output
 
 
-        # excute
+        # execute
         return two_pointer()
