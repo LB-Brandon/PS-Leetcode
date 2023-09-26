@@ -15,4 +15,9 @@ class Solution:
                 if i%2 == 0:
                     output += nums[i]
             return output
+
+        def sol3():
+            output = sum(sorted(nums)[::2])
+            return output
+
         return sol2()
