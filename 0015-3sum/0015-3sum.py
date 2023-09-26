@@ -24,10 +24,10 @@ class Solution:
             output = list(output)
             return output
 
+        # T: N(N^2), S: N(N^2)
         def two_pointer():
             output = []
             nums.sort()
-            
             for i in range(len(nums)-2):
                 if i > 0 and nums[i] == nums[i-1]:
                     continue
@@ -48,9 +48,6 @@ class Solution:
                         left += 1
                         right -= 1
             return output
-            print(output)
-
-
 
 
         # excute
