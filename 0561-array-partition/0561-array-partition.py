@@ -11,6 +11,8 @@ class Solution:
         def sol2():
             output = 0
             nums.sort()
-            # for i in range(len(nums)):
-                
-        return sol1()
+            for i in range(len(nums)):
+                if i%2 == 0:
+                    output += nums[i]
+            return output
+        return sol2()
