@@ -28,6 +28,7 @@ class Solution:
         def two_pointer():
             output = []
             nums.sort()
+            if nums[0] > 0: return output
             for i in range(len(nums)-2):
                 if i > 0 and nums[i] == nums[i-1]:
                     continue
