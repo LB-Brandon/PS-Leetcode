@@ -88,9 +88,32 @@ class Solution:
                     target = -1*(p[i]+p[j])
                     if target in N:
                         output.add(tuple(sorted([p[i], p[j], target])))
-            return output            
+            return output         
 
+        def so():
+            output = []
 
+            nums.sort()
+            
+            # iterate over nums, going over all possible triplets and calculating their sums
+            length = len(nums)
+
+            for i in range(length):
+                j = i+1
+                k = length-1
+
+                while j < k:
+                    possibility = sorted([nums[i], nums[j], nums[k]])
+                    total = sum(possibility)
+                    if total == 0 and i != j and i != k and j != k:
+                        if possibility not in output:
+                            output.append(possibility)
+                        j += 1
+                    elif total < 0:
+                        j += 1
+                    elif total > 0:
+                        k -= 1
+            return output
 
         # execute
-        return pos_neg_zero_sum()
+        return so()
