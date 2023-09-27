@@ -24,6 +24,7 @@ class Solution:
                 output.append(total)
             return output
             
+        # T: O(N), S: O(N)
         def sol3():
             output = []
             prefix = [1] * len(nums)
@@ -36,8 +37,6 @@ class Solution:
             for i in range(len(nums)-1, -1, -1):
                 postfix[i] = init*nums[i]
                 init = postfix[i]
-            print('pre', prefix)
-            print('post', postfix)
             for i in range(len(nums)):
                 pre_idx = i-1
                 post_idx = i+1
@@ -49,10 +48,28 @@ class Solution:
                     post = 1
                 else:
                     post = postfix[post_idx]
-                print(pre, post)
                 output.append(pre*post)
-            print(output)
             return output
 
+        def sol4():
+            output = []
+            prefix = []
+            postfix = []
+
+            for i in range(len(nums)):
+                if i == 0:
+                    prefix.append(1)
+                else:
+                    prefix.append(prefix[-1] * nums[i-1])
+            for i in range(len(nums)):
+                if i == 0:
+                    postfix.append(1)
+                else:
+                    postfix.append(postfix[-1] * nums[len(nums)-i])
+            postfix = postfix[::-1]
+
+            for i in range(len(nums)):
+                output.append(prefix[i] * postfix[i])
+            return output
         
-        return sol3()
+        return sol4()
