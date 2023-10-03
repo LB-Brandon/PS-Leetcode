@@ -25,7 +25,7 @@ class Solution:
 
 
 
-        return sol2()
+        return sol1()
         
 
 
