@@ -15,7 +15,17 @@ class Solution:
                 cur = front
             return back
         
-        return sol1()
+        def sol2():
+            def reverse(node, prev = None):
+                if not node:
+                    return prev
+                next, node.next = node.next, prev
+                return reverse(next, node)
+            return reverse(head)
+
+
+
+        return sol2()
         
 
 
