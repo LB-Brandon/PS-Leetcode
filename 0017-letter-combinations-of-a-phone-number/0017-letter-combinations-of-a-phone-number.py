@@ -29,8 +29,8 @@ class Solution:
                 return
         
             for i in range(start, len(digits)):
-                for j in mapping[digits[i]]:
-                    dfs(i+1, path+j)
+                for c in mapping[digits[i]]:
+                    dfs(i+1, path+c)
         
         if not digits:
             return []
