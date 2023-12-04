@@ -10,16 +10,33 @@ class Solution:
             '8' : "tuv",
             '9' : "wxyz"
         }
+        
+        # iterative
+        # if not digits:
+        #     return []
+        # result = ['']
+        # for d in digits:
+        #     q = result.copy()
+        #     result = []
+        #     for s in q:
+        #         for c in mapping[d]:
+        #             result.append(s+c)
+        
+        # backtracking        
+        def dfs(start, path):
+            if len(path) == len(digits):
+                result.append(path)
+                return
+        
+            for i in range(start, len(digits)):
+                for j in mapping[digits[i]]:
+                    dfs(i+1, path+j)
+        
         if not digits:
             return []
-        result = ['']
-        for d in digits:
-            q = result.copy()
-            result = []
-            for s in q:
-                for c in mapping[d]:
-                    result.append(s+c)
-                    
+        
+        result = []
+        dfs(0, '')   
         return result
         
     
