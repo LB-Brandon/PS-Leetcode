@@ -3,14 +3,14 @@ class Solution:
         graph = collections.defaultdict(list)
         
         # make sorted adjacency list in smallest lexical order
-        for ticket in sorted(tickets):
+        for ticket in sorted(tickets, reverse=True):
             f, t = ticket
             graph[f].append(t)
         
         def dfs(current):
             # explore all possible destinations
             while graph[current]:
-                dfs(graph[current].pop(0))
+                dfs(graph[current].pop())
             # record the decision from the last
             result.append(current)
             
